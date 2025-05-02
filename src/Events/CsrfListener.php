@@ -1,11 +1,11 @@
 <?php
 
-namespace PHPico\Form\Events;
+namespace NixPHP\Form\Events;
 
-use PHPico\Exceptions\AbortException;
+use NixPHP\Exceptions\AbortException;
 use Psr\Http\Message\ServerRequestInterface;
-use function PHPico\abort;
-use function PHPico\guard;
+use function NixPHP\abort;
+use function NixPHP\guard;
 
 class CsrfListener
 {

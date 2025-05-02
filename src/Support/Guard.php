@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPico\Form\Support;
+namespace NixPHP\Form\Support;
 
-use PHPico\Support\Guard as BaseGuard;
+use NixPHP\Support\Guard as BaseGuard;
 
 class Guard extends BaseGuard
 {

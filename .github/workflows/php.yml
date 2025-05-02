@@ -1,4 +1,4 @@
-name: PHPico Form Plugin
+name: NixPHP Form Plugin
 
 on:
   push:

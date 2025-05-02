@@ -1,10 +1,10 @@
 <?php
 
-namespace PHPIco\Form;
+namespace NixPHP\Form;
 
-use PHPico\Form\Core\Validator;
+use NixPHP\Form\Core\Validator;
 use Psr\Http\Message\ServerRequestInterface;
-use function PHPico\app;
+use function NixPHP\app;
 
 function memory(string $key, mixed $default = null):? string
 {
@@ -24,7 +24,7 @@ function memory(string $key, mixed $default = null):? string
 
 function memory_checked(string $key, mixed $value = 'on'): string
 {
-    $input = \PHPico\Form\memory($key);
+    $input = \NixPHP\Form\memory($key);
     return $input === $value ? 'checked' : '';
 }
 

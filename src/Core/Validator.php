@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPico\Form\Core;
+namespace NixPHP\Form\Core;
 
 class Validator
 {

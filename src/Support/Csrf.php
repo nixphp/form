@@ -1,8 +1,8 @@
 <?php
 
-namespace PHPico\Form\Support;
+namespace NixPHP\Form\Support;
 
-use function PHPico\session;
+use function NixPHP\session;
 
 class Csrf
 {

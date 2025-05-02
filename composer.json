@@ -1,6 +1,6 @@
 {
-  "name": "phpico/form",
-  "description": "PHPico Form Plugin to make form handling easier.",
+  "name": "nixphp/form",
+  "description": "NixPHP Form Plugin to make form handling easier.",
   "minimum-stability": "stable",
   "license": "MIT",
   "type": "phpico-plugin",

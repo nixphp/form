@@ -3,7 +3,7 @@
   "description": "NixPHP Form Plugin to make form handling easier.",
   "minimum-stability": "stable",
   "license": "MIT",
-  "type": "phpico-plugin",
+  "type": "nixphp-plugin",
   "authors": [
     {
       "name": "Flo Knapp",

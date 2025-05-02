@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fkde/phpico.git",
-                "reference": "a7b1c22f115b704aec5907f76c55ba22c1c0c61c"
+                "reference": "eef36db8975d873056e1c6ab4ba241c598d2a57b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fkde/phpico/zipball/a7b1c22f115b704aec5907f76c55ba22c1c0c61c",
-                "reference": "a7b1c22f115b704aec5907f76c55ba22c1c0c61c",
+                "url": "https://api.github.com/repos/fkde/phpico/zipball/eef36db8975d873056e1c6ab4ba241c598d2a57b",
+                "reference": "eef36db8975d873056e1c6ab4ba241c598d2a57b",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
                 "issues": "https://github.com/fkde/phpico/issues",
                 "source": "https://github.com/fkde/phpico/tree/main"
             },
-            "time": "2025-04-28T16:52:04+00:00"
+            "time": "2025-05-02T15:51:48+00:00"
         },
         {
             "name": "nyholm/psr7",

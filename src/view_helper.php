@@ -3,11 +3,13 @@
 namespace PHPIco\Form;
 
 use PHPico\Form\Core\Validator;
+use Psr\Http\Message\ServerRequestInterface;
 use function PHPico\app;
 
 function memory(string $key, mixed $default = null):? string
 {
-    $request = app()->request();
+    /* @var ServerRequestInterface $request */
+    $request = app()->container()->get('request');
     $parsedBody = $request->getParsedBody();
     $queryParams = $request->getQueryParams();
 

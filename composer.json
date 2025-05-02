@@ -10,12 +10,6 @@
       "email": "office@florianknapp.de"
     }
   ],
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../phpico"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "PHPico\\Form\\": "src/"

@@ -2,7 +2,7 @@
 
 namespace NixPHP\Form\Support;
 
-use function NixPHP\session;
+use function NixPHP\Session\session;
 
 class Csrf
 {

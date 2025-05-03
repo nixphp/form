@@ -24,7 +24,7 @@ function memory(string $key, mixed $default = null):? string
 
 function memory_checked(string $key, mixed $value = 'on'): string
 {
-    $input = \NixPHP\Form\memory($key);
+    $input = memory($key);
     return $input === $value ? 'checked' : '';
 }
 
@@ -34,7 +34,7 @@ function memory_selected(string $key, mixed $expectedValue): string
     return $input == $expectedValue ? 'selected' : '';
 }
 
-function validator($data, $rules)
+function validator($data, $rules): Validator
 {
     return new Validator($data, $rules);
 }

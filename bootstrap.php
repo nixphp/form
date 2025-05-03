@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
-
 use NixPHP\Form\Events\CsrfListener;
 use NixPHP\Form\Support\Guard;
 use function NixPHP\app;

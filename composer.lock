@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nixphp/framework.git",
-                "reference": "4cccd04f6c42853bfd20d7e79a35610c91858318"
+                "reference": "624b84a714a61c688fa138e05fc78a4e2a5de777"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nixphp/framework/zipball/4cccd04f6c42853bfd20d7e79a35610c91858318",
-                "reference": "4cccd04f6c42853bfd20d7e79a35610c91858318",
+                "url": "https://api.github.com/repos/nixphp/framework/zipball/624b84a714a61c688fa138e05fc78a4e2a5de777",
+                "reference": "624b84a714a61c688fa138e05fc78a4e2a5de777",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
                 "issues": "https://github.com/nixphp/framework/issues",
                 "source": "https://github.com/nixphp/framework/tree/main"
             },
-            "time": "2025-05-03T15:57:46+00:00"
+            "time": "2025-05-04T19:16:27+00:00"
         },
         {
             "name": "nixphp/session",
@@ -70,12 +70,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nixphp/session.git",
-                "reference": "681fe21cdab64d772c3d52acc4e3984cfe43e15c"
+                "reference": "98bfe4bb9a96e33dd3c3ebdd5e83879914be4f66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nixphp/session/zipball/681fe21cdab64d772c3d52acc4e3984cfe43e15c",
-                "reference": "681fe21cdab64d772c3d52acc4e3984cfe43e15c",
+                "url": "https://api.github.com/repos/nixphp/session/zipball/98bfe4bb9a96e33dd3c3ebdd5e83879914be4f66",
+                "reference": "98bfe4bb9a96e33dd3c3ebdd5e83879914be4f66",
                 "shasum": ""
             },
             "require": {
@@ -111,7 +111,7 @@
                 "issues": "https://github.com/nixphp/session/issues",
                 "source": "https://github.com/nixphp/session/tree/main"
             },
-            "time": "2025-05-03T14:33:48+00:00"
+            "time": "2025-05-04T19:21:52+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -760,16 +760,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "12.2.0",
+            "version": "12.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "4c7133dbade8423ef124ae62c39a075ba591cb3f"
+                "reference": "448f2c504d86dbff3949dcd02c95aa85db2c7617"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/4c7133dbade8423ef124ae62c39a075ba591cb3f",
-                "reference": "4c7133dbade8423ef124ae62c39a075ba591cb3f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/448f2c504d86dbff3949dcd02c95aa85db2c7617",
+                "reference": "448f2c504d86dbff3949dcd02c95aa85db2c7617",
                 "shasum": ""
             },
             "require": {
@@ -825,7 +825,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.2.0"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.2.1"
             },
             "funding": [
                 {
@@ -845,7 +845,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-03T07:27:30+00:00"
+            "time": "2025-05-04T05:25:05+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

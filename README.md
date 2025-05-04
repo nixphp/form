@@ -1,4 +1,11 @@
-![Logo](https://nixphp.github.io/docs/assets/nixphp-logo-small.png)
+<div style="text-align: center;">
+
+![Logo](https://nixphp.github.io/docs/assets/nixphp-logo-small-square.png)
+
+[![NixPHP Form Plugin](https://github.com/nixphp/form/actions/workflows/php.yml/badge.svg)](https://github.com/nixphp/form/actions/workflows/php.yml)
+
+</div>
+
 
 [← Back to NixPHP](https://github.com/nixphp/framework)
 

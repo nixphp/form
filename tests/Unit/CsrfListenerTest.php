@@ -6,7 +6,7 @@ use Nyholm\Psr7\ServerRequest;
 use NixPHP\Form\Events\CsrfListener;
 use NixPHP\Exceptions\AbortException;
 use Tests\NixPHPTestCase;
-use function NixPHP\session;
+use function NixPHP\Session\session;
 
 class CsrfListenerTest extends NixPHPTestCase
 {

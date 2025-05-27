@@ -75,7 +75,7 @@ class Validator
         return $this->errors;
     }
 
-    public function getError(string $fieldName):? string
+    public function getError(string $fieldName):? array
     {
         return $this->errors[$fieldName] ?? null;
     }

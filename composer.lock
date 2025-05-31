@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nixphp/framework.git",
-                "reference": "e72e8f159512f075cc838e23a389cb91140a929e"
+                "reference": "ee9dea43ce3106f2981cf514ee16baf10f217169"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nixphp/framework/zipball/e72e8f159512f075cc838e23a389cb91140a929e",
-                "reference": "e72e8f159512f075cc838e23a389cb91140a929e",
+                "url": "https://api.github.com/repos/nixphp/framework/zipball/ee9dea43ce3106f2981cf514ee16baf10f217169",
+                "reference": "ee9dea43ce3106f2981cf514ee16baf10f217169",
                 "shasum": ""
             },
             "require": {
@@ -62,7 +62,7 @@
                 "issues": "https://github.com/nixphp/framework/issues",
                 "source": "https://github.com/nixphp/framework/tree/main"
             },
-            "time": "2025-05-31T12:10:02+00:00"
+            "time": "2025-05-31T21:07:22+00:00"
         },
         {
             "name": "nixphp/session",
@@ -70,12 +70,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nixphp/session.git",
-                "reference": "98bfe4bb9a96e33dd3c3ebdd5e83879914be4f66"
+                "reference": "d68e42a97914f45846e897f5935a02f487a7b15a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nixphp/session/zipball/98bfe4bb9a96e33dd3c3ebdd5e83879914be4f66",
-                "reference": "98bfe4bb9a96e33dd3c3ebdd5e83879914be4f66",
+                "url": "https://api.github.com/repos/nixphp/session/zipball/d68e42a97914f45846e897f5935a02f487a7b15a",
+                "reference": "d68e42a97914f45846e897f5935a02f487a7b15a",
                 "shasum": ""
             },
             "require": {
@@ -89,9 +89,6 @@
             "default-branch": true,
             "type": "nixphp-plugin",
             "autoload": {
-                "files": [
-                    "src/functions.php"
-                ],
                 "psr-4": {
                     "NixPHP\\Session\\": "src/"
                 }
@@ -111,7 +108,7 @@
                 "issues": "https://github.com/nixphp/session/issues",
                 "source": "https://github.com/nixphp/session/tree/main"
             },
-            "time": "2025-05-04T19:21:52+00:00"
+            "time": "2025-05-31T21:10:46+00:00"
         },
         {
             "name": "nyholm/psr7",

@@ -13,10 +13,7 @@
   "autoload": {
     "psr-4": {
       "NixPHP\\Form\\": "src/"
-    },
-    "files": [
-      "src/view_helper.php"
-    ]
+    }
   },
   "autoload-dev": {
     "psr-4": {

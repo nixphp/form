@@ -36,7 +36,7 @@ function error($field, Validator $validator):? string
     }
 
     if (isset($validator->errors()[$field])) {
-        return implode(PHP_EOL, $validator->getError($field));
+        return '<div class="error-msg">' . implode(PHP_EOL, $validator->getError($field)) . '</div>';
     }
 
     return null;

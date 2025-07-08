@@ -28,6 +28,10 @@ class CsrfListener
 
         $csrfToken = $request->getParsedBody()['_csrf'] ?? $request->getHeader('X-CSRF-Token') ?? null;
 
+        if (is_array($csrfToken)) {
+            $csrfToken = reset($csrfToken);
+        }
+
         if (empty($csrfToken)) {
             abort(400, 'CSRF token missing.');
         }

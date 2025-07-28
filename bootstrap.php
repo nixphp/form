@@ -1,8 +1,10 @@
 <?php
 
 use NixPHP\Form\Events\CsrfListener;
-use NixPHP\Form\Support\Guard;
+use NixPHP\Form\Support\Csrf;
 use function NixPHP\app;
+use function NixPHP\guard;
 
-app()->container()->set('guard', function () { return new Guard(); });
+guard()->register('csrf', new Csrf());
+
 app()->container()->get('event')->listen('controller.calling', [CsrfListener::class, 'handle']);

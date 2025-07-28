@@ -5,7 +5,7 @@ namespace NixPHP\Form\Events;
 use NixPHP\Exceptions\AbortException;
 use Psr\Http\Message\ServerRequestInterface;
 use function NixPHP\abort;
-use function NixPHP\guard;
+use function NixPHP\Guard\guard;
 
 class CsrfListener
 {

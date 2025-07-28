@@ -4,8 +4,8 @@ namespace NixPHP\Form;
 
 use NixPHP\Form\Core\Validator;
 use function NixPHP\app;
-use function NixPHP\guard;
 use function NixPHP\param;
+use function NixPHP\Guard\guard;
 
 function memory(string $key, mixed $default = null):? string
 {
@@ -55,9 +55,4 @@ function error_class($field, Validator $validator): string
 function is_post(): bool
 {
     return app()->container()->get('request')->getMethod() === 'POST';
-}
-
-function csrf(): string
-{
-    return guard()->csrf()->generate();
 }

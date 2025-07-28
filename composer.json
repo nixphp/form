@@ -23,7 +23,7 @@
   "require": {
     "php": ">=8.3",
     "nixphp/framework": "dev-main",
-    "nixphp/guard": "dev-main"
+    "nixphp/session": "dev-main"
   },
   "require-dev": {
     "phpunit/phpunit": "^12.1",

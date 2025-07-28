@@ -5,7 +5,7 @@ namespace NixPHP\Form\Events;
 use NixPHP\Exceptions\AbortException;
 use Psr\Http\Message\ServerRequestInterface;
 use function NixPHP\abort;
-use function NixPHP\Guard\guard;
+use function NixPHP\Form\csrf;
 
 class CsrfListener
 {
@@ -36,7 +36,7 @@ class CsrfListener
             abort(400, 'CSRF token missing.');
         }
 
-        if (false === guard()->csrf()->validate($csrfToken)) {
+        if (false === csrf()->validate($csrfToken)) {
             abort(400, 'CSRF token invalid.');
         }
     }

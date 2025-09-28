@@ -25,9 +25,9 @@ function memory_selected(string $key, mixed $expectedValue): string
     return $input == $expectedValue ? 'selected' : '';
 }
 
-function validator($data, $rules): Validator
+function validator(): Validator
 {
-    return new Validator($data, $rules);
+    return app()->container()->get('validator');
 }
 
 function error($field, Validator $validator):? string
@@ -36,8 +36,8 @@ function error($field, Validator $validator):? string
         return null;
     }
 
-    if (isset($validator->errors()[$field])) {
-        return '<div class="error-msg">' . implode(PHP_EOL, $validator->getError($field)) . '</div>';
+    if ($validator->getErrorMessage($field)) {
+        return '<div class="error-msg">' . implode(PHP_EOL, $validator->getErrorMessage($field)) . '</div>';
     }
 
     return null;

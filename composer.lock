@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nixphp/framework.git",
-                "reference": "0ee2029d3ab0bb02137b207bc54b72995a946dd8"
+                "reference": "5aeefff34b6fa3352fc2cd15eb65c2607b626f08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nixphp/framework/zipball/0ee2029d3ab0bb02137b207bc54b72995a946dd8",
-                "reference": "0ee2029d3ab0bb02137b207bc54b72995a946dd8",
+                "url": "https://api.github.com/repos/nixphp/framework/zipball/5aeefff34b6fa3352fc2cd15eb65c2607b626f08",
+                "reference": "5aeefff34b6fa3352fc2cd15eb65c2607b626f08",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "issues": "https://github.com/nixphp/framework/issues",
                 "source": "https://github.com/nixphp/framework/tree/main"
             },
-            "time": "2025-07-28T20:22:19+00:00"
+            "time": "2025-07-28T21:04:53+00:00"
         },
         {
             "name": "nixphp/session",

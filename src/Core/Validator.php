@@ -4,79 +4,63 @@ namespace NixPHP\Form\Core;
 
 class Validator
 {
-    protected array $data = [];
-    protected array $rules = [];
+    protected static array $registry = [];
     protected array $errors = [];
 
-    public function __construct(array $data, array $rules)
+    public static function register(string $name, callable $callback, string $defaultMessage): void
     {
-        $this->data = $data;
-        $this->rules = $rules;
-        $this->validate();
+        self::$registry[$name] = [
+            'callback' => $callback,
+            'message'  => $defaultMessage
+        ];
     }
 
-    protected function validate(): void
+    public function validate(array $data, array $rules, array $messages = []): self
     {
-        foreach ($this->rules as $fieldName => $rules) {
+        $this->errors = [];
 
-            $rulesArray = explode('|', $rules);
+        foreach ($rules as $field => $ruleSet) {
+            $rulesForField = is_string($ruleSet) ? explode('|', $ruleSet) : (array) $ruleSet;
 
-            foreach ($rulesArray as $rule) {
-                $parameters = null;
+            foreach ($rulesForField as $rule) {
+                $params = null;
 
                 if (str_contains($rule, ':')) {
-                    [$rule, $parameters] = explode(':', $rule, 2);
+                    [$rule, $params] = explode(':', $rule, 2);
                 }
 
-                $method = 'validate' . ucfirst($rule);
+                if (!isset(self::$registry[$rule])) {
+                    throw new \InvalidArgumentException("Validator '$rule' not found.");
+                }
 
-                if (method_exists($this, $method)) {
-                    $this->$method($fieldName, $parameters);
+                $callback = self::$registry[$rule]['callback'];
+                $result   = $callback($data[$field] ?? null, $params, $data);
+
+                if (true !== $result) {
+                    $message = $messages[$field][$rule]
+                        ?? self::$registry[$rule]['message'];
+
+                    $this->errors[$field][] = sprintf($message, $params);
                 }
             }
         }
+
+        return $this;
     }
 
-    protected function validateRequired($fieldName): void
+    public function isValid(): bool
     {
-        if (empty($this->data[$fieldName])) {
-            $this->errors[$fieldName][] = 'Feld "' . $fieldName . '" ist erforderlich.';
-        }
+        return empty($this->errors);
     }
 
-    protected function validateEmail($fieldName): void
-    {
-        if (!filter_var($this->data[$fieldName] ?? '', FILTER_VALIDATE_EMAIL)) {
-            $this->errors[$fieldName][] = 'Feld "' . $fieldName . '" muss eine gültige E-Mail-Adresse sein.';
-        }
-    }
-
-    protected function validateMin($fieldName, $min): void
-    {
-        if (strlen($this->data[$fieldName] ?? '') < (int) $min) {
-            $this->errors[$fieldName][] = 'Feld "' . $fieldName . '" muss mindestens ' . $min . ' Zeichen lang sein.';
-        }
-    }
-
-    protected function validateMax($fieldName, $max): void
-    {
-        if (strlen($this->data[$fieldName] ?? '') > (int) $max) {
-            $this->errors[$fieldName][] = 'Feld "' . $fieldName . '" darf höchstens ' . $max . ' Zeichen lang sein.';
-        }
-    }
-
-    public function fails(): bool
-    {
-        return !empty($this->errors);
-    }
-
-    public function errors(): array
+    public function getErrorMessages(): array
     {
         return $this->errors;
     }
 
-    public function getError(string $fieldName):? array
+    public function getErrorMessage(string $field): ?array
     {
-        return $this->errors[$fieldName] ?? null;
+        return $this->errors[$field] ?? null;
     }
 }
+

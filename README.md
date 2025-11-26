@@ -213,8 +213,8 @@ All without configuration.
 
 ## 📁 Requirements
 
-* `nixphp/framework` ≥ 1.0
-* `nixphp/session` (required for CSRF + memory)
+* `nixphp/framework` ≥ 0.1.0
+* `nixphp/session` ≥ 0.1.0 (required for CSRF + memory)
 
 ---
 

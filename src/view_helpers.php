@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NixPHP\Form;
 
 use NixPHP\Form\Core\Validator;
@@ -16,18 +18,20 @@ function memory(string $key, mixed $default = null):? string
 function memory_checked(string $key, mixed $value = 'on'): string
 {
     $input = memory($key);
+
     return $input === $value ? 'checked' : '';
 }
 
 function memory_selected(string $key, mixed $expectedValue): string
 {
     $input = memory($key);
+
     return $input == $expectedValue ? 'selected' : '';
 }
 
 function validator(): Validator
 {
-    return app()->container()->get('validator');
+    return app()->container()->get(Validator::class);
 }
 
 function error($field, Validator $validator):? string

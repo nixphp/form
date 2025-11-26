@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NixPHP\Form\Support;
 
 use function NixPHP\Session\session;

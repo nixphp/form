@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NixPHP\Form\Events;
 
 use NixPHP\Exceptions\AbortException;

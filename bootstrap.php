@@ -6,7 +6,7 @@ use NixPHP\Form\Core\Validator;
 use NixPHP\Form\Events\CsrfListener;
 use NixPHP\Form\Support\Csrf;
 use NixPHP\Core\EventManager;
-use NixPHP\Enum\Event;
+use NixPHP\Core\Event;
 use function NixPHP\app;
 use function NixPHP\guard;
 

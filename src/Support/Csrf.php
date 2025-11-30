@@ -21,7 +21,7 @@ class Csrf
     {
         session()->start();
         $csrfToken = session()->get('_csrf');
-        return $csrfToken === $token;
+        return is_string($csrfToken) && hash_equals($csrfToken, $token);
     }
 
 }

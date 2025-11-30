@@ -46,7 +46,7 @@ The plugin registers itself. No additional setup needed.
 
 ## 🚀 Usage
 
-# 🧠 Form Memory
+### 🧠 Form Memory
 
 ### `memory($key, $default = null)`
 
@@ -76,7 +76,7 @@ Memory is powered by `param()` and persists automatically after POST requests.
 
 ---
 
-# 🧪 Validation
+## 🧪 Validation
 
 Create a Validator and run rules:
 
@@ -98,7 +98,7 @@ if (validator()->isValid()) {
 Custom messages:
 
 ```php
-validator()->validate($reqeust->getParsedBody(), [
+validator()->validate($request->getParsedBody(), [
     'name' => 'required|min:3'
 ], [
     'name' => [
@@ -117,7 +117,7 @@ validator()->getErrorMessage('email');
 
 ---
 
-# 🧩 Built-in Validation Rules
+### 🧩 Built-in Validation Rules
 
 The plugin registers these rules automatically:
 
@@ -139,7 +139,7 @@ Validator::register('starts_with', function ($value, $param) {
 
 ---
 
-# 🎨 View Helpers for Errors
+## 🎨 View Helpers for Errors
 
 ### `error($field, Validator $validator)`
 
@@ -175,7 +175,7 @@ Detects if the request method is POST.
 
 ---
 
-# 🛡️ CSRF Protection
+## 🛡️ CSRF Protection
 
 CSRF is enforced automatically for:
 
@@ -197,7 +197,7 @@ Invalid tokens immediately trigger a 400 response before controller execution.
 
 ---
 
-# 🔍 Internals
+## 🔍 Internals
 
 The plugin automatically:
 

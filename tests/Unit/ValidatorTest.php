@@ -99,7 +99,6 @@ class ValidatorTest extends NixPHPTestCase
 
         $errors = $validator->getErrorMessage('username');
 
-        // required passes, min fails → exakt 1 Fehler
         $this->assertCount(1, $errors);
     }
 

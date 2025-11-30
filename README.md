@@ -6,30 +6,31 @@
 
 </div>
 
-
 [← Back to NixPHP](https://github.com/nixphp/framework)
 
 ---
 
 # nixphp/form
 
-> **Form handling done the NixPHP way — minimal, secure, and intuitive.**
+> **Form handling the NixPHP way — minimal, secure, intuitive, extendable.**
 
-This plugin provides **form memory helpers** and **CSRF protection** for your NixPHP application.
-It integrates seamlessly and requires no configuration.
+This plugin provides **form memory**, **CSRF protection**, a flexible **Validator system**,
+and a full set of **view helpers** for easy form handling in your NixPHP applications.
 
-> 🧩 Part of the official NixPHP plugin collection.
-> Install it when you need to handle form input and secure POST requests — nothing more.
+Everything is registered automatically and works without configuration.
 
 ---
 
 ## 📦 Features
 
-* ✅ Form input memory: preserve user data between requests
-* ✅ CSRF protection: validated automatically before controller calls
-* ✅ Works out of the box, no configuration needed
-* ✅ Clean view helpers for error display
-* ✅ Registers its listener via plugin bootstrap
+* ✔️ **Form input memory** (`memory()`, `memory_checked()`, `memory_selected()`)
+* ✔️ **CSRF protection** via automatic event listener
+* ✔️ **Validator system** with dynamic rule registry
+* ✔️ **Built-in rules:** `required`, `email`, `min`, `max`, `boolean`
+* ✔️ **Custom rules** via `Validator::register()`
+* ✔️ **View helpers** (`error()`, `has_error()`, `error_class()`, `validator()`)
+* ✔️ Automatically integrates into `guard()` and the event system
+* ✔️ Zero configuration — plug and play
 
 ---
 
@@ -39,64 +40,180 @@ It integrates seamlessly and requires no configuration.
 composer require nixphp/form
 ```
 
-That’s it. The plugin will be autoloaded and ready to use.
+The plugin registers itself. No additional setup needed.
 
 ---
 
 ## 🚀 Usage
 
-### 🧠 Preserve user input: `memory()`
+### 🧠 Form Memory
 
-Use the `memory()` helper in your views to repopulate form fields:
+### `memory($key, $default = null)`
+
+Restores previous user input:
 
 ```php
-<input type="text" name="email" value="<?= memory('email') ?>">
+<input name="email" value="<?= memory('email') ?>">
 ```
 
-It automatically remembers the previous input after validation or redirects.
+### `memory_checked($key, $value = 'on')`
 
-You can also check for general errors using:
+Works for checkboxes:
 
 ```php
-<?php if (formError('email')): ?>
-    <p class="error"><?= formError('email') ?></p>
-<?php endif; ?>
+<input type="checkbox" name="terms" <?= memory_checked('terms') ?>>
+```
+
+### `memory_selected($key, $expected)`
+
+Works for selects:
+
+```php
+<option value="de" <?= memory_selected('country', 'de') ?>>Germany</option>
+```
+
+Memory is powered by `param()` and persists automatically after POST requests.
+
+---
+
+## 🧪 Validation
+
+Create a Validator and run rules:
+
+```php
+validator()->validate(request()->getParsedBody(), [
+    'email'    => 'required|email',
+    'password' => 'required|min:8',
+]);
+```
+
+Check validity:
+
+```php
+if (validator()->isValid()) {
+    // continue...
+}
+```
+
+Custom messages:
+
+```php
+validator()->validate($request->getParsedBody(), [
+    'name' => 'required|min:3'
+], [
+    'name' => [
+        'required' => 'Please enter your name.',
+        'min'      => 'At least %s characters.'
+    ]
+]);
+```
+
+Get errors:
+
+```php
+validator()->getErrorMessages();
+validator()->getErrorMessage('email');
 ```
 
 ---
 
-### 🛡️ CSRF Protection
+### 🧩 Built-in Validation Rules
 
-CSRF validation is triggered **automatically** for `POST`, `PUT`, and `DELETE` requests
-(unless the request contains an `Authorization` header).
+The plugin registers these rules automatically:
 
-To protect your forms, include a CSRF token:
+```php
+Validator::register('required', fn($val) => !empty($val), 'Field is required.');
+Validator::register('email', fn($val) => (bool)filter_var($val, FILTER_VALIDATE_EMAIL), 'Please enter a valid email address.');
+Validator::register('min', fn($val, $p) => empty($val) || mb_strlen((string)$val) >= (int)$p, 'At least %d characters.');
+Validator::register('max', fn($val, $p) => empty($val) || mb_strlen((string)$val) <= (int)$p, 'Maximum of %d characters.');
+Validator::register('boolean', fn($val) => filter_var($val, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) !== null, 'Is not a boolean value.');
+
+### Adding your own rule:
+
+```php
+Validator::register('starts_with', function ($value, $param) {
+    return str_starts_with((string)$value, $param);
+}, "Value must start with '%s'.");
+```
+
+---
+
+## 🎨 View Helpers for Errors
+
+### `error($field, Validator $validator)`
+
+Outputs error messages wrapped in `<div class="error-msg">`.
+
+```php
+<?= error('email', $validator) ?>
+```
+
+### `has_error($field, $validator)`
+
+Useful for conditional styling:
+
+```php
+<div class="<?= error_class('email', $validator) ?>">
+```
+
+### `error_class($field, $validator)`
+
+Returns `"error"` if the field has validation errors.
+
+### `validator()`
+
+Returns the Validator instance from the container:
+
+```php
+$validator = validator();
+```
+
+### `is_post()`
+
+Detects if the request method is POST.
+
+---
+
+## 🛡️ CSRF Protection
+
+CSRF is enforced automatically for:
+
+* POST
+* PUT
+* DELETE
+
+unless an `Authorization` header exists.
+
+Add the token to your form:
 
 ```php
 <form method="post">
-    <input type="hidden" name="_csrf" value="<?= guard()->csrf()->generate() ?>">
-    <!-- other fields -->
+    <input type="hidden" name="_csrf" value="<?= csrf()->generate() ?>">
 </form>
 ```
 
-This will be validated before any controller logic is executed.
-
-If the token is missing or invalid, a 400 error is returned.
+Invalid tokens immediately trigger a 400 response before controller execution.
 
 ---
 
 ## 🔍 Internals
 
-* The plugin registers a listener to the `controller.calling` event to validate CSRF tokens.
-* It also extends the `guard()` service to include a `csrf()` method.
-* View helpers like `formError()` and `memory()` are automatically available.
+The plugin automatically:
+
+* Registers built-in validator rules via the container
+* Hooks CSRF validation into `Event::CONTROLLER_CALLING`
+* Extends the guard with a CSRF service
+* Provides global view helpers for forms
+* Uses `param()` to manage form memory state
+
+All without configuration.
 
 ---
 
-## ✅ Requirements
+## 📁 Requirements
 
-* `nixphp/framework` >= 1.0
-* `nixphp/session` (required for CSRF and memory state)
+* `nixphp/framework` ≥ 0.1.0
+* `nixphp/session` ≥ 0.1.0 (required for CSRF + memory)
 
 ---
 

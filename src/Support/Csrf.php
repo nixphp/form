@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NixPHP\Form\Support;
 
 use function NixPHP\Session\session;
@@ -19,7 +21,7 @@ class Csrf
     {
         session()->start();
         $csrfToken = session()->get('_csrf');
-        return $csrfToken === $token;
+        return is_string($csrfToken) && hash_equals($csrfToken, $token);
     }
 
 }

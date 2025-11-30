@@ -126,8 +126,7 @@ Validator::register('required', fn($val) => !empty($val), 'Field is required.');
 Validator::register('email', fn($val) => (bool)filter_var($val, FILTER_VALIDATE_EMAIL), 'Please enter a valid email address.');
 Validator::register('min', fn($val, $p) => empty($val) || mb_strlen((string)$val) >= (int)$p, 'At least %d characters.');
 Validator::register('max', fn($val, $p) => empty($val) || mb_strlen((string)$val) <= (int)$p, 'Maximum of %d characters.');
-Validator::register('boolean', fn($val) => is_bool($val), 'Is not boolean value.');
-```
+Validator::register('boolean', fn($val) => filter_var($val, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE) !== null, 'Is not a boolean value.');```
 
 ### Adding your own rule:
 

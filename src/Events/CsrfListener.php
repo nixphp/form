@@ -7,6 +7,7 @@ namespace NixPHP\Form\Events;
 use NixPHP\Exceptions\AbortException;
 use Psr\Http\Message\ServerRequestInterface;
 use function NixPHP\abort;
+use function NixPHP\config;
 use function NixPHP\Form\csrf;
 
 class CsrfListener
@@ -20,6 +21,10 @@ class CsrfListener
      */
     public function handle(ServerRequestInterface $request): void
     {
+        if (config('csrf_validation', true) === false) {
+            return;
+        }
+
         if (!\in_array($request->getMethod(), ['POST','PUT','DELETE'], true)) {
             return;
         }

@@ -15,7 +15,8 @@ class NixPHPTestCase extends TestCase
         // Reset the static registry after each test
         $reflection = new \ReflectionClass(Validator::class);
         $property = $reflection->getProperty('registry');
-        $property->setAccessible(true);
+        // setAccessible() has done nothing since PHP 8.1 and is deprecated in 8.5,
+        // where a deprecation fails this suite outright.
         $property->setValue(null, []);
         parent::tearDown();
     }

@@ -1,5 +1,6 @@
 {
   "name": "nixphp/form",
+  "abandoned": "naf/form",
   "description": "NixPHP Form Plugin to make form handling easier.",
   "minimum-stability": "stable",
   "license": "MIT",
